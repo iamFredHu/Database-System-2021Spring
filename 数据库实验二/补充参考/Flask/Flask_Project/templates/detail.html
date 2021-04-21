@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}详情{% endblock %}
+
+{% block head %}{% endblock %}
+
+{% block main %}
+    <h3 class="page-title" style="text-align:center">{{ question.title }}</h3>
+    <p class="question-info" style="text-align:center;margin-top:20px;">
+        <span>作者:{{ question.author.username }}</span>
+        <span>时间:{{ question.create_time }}</span>
+    </p>
+    <hr>
+    <p class="question-content">{{ question.content }}</p>
+    <hr>
+    <h4>评论(0):</h4>
+    <form action="{{ url_for('add_answer') }}" method="post">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="请填写评论" name="answer_content">
+            <input type="hidden" name="question_id" value="{{ question.id }}">
+        </div>
+        <div class="form-group" style="text-align:right;">
+            <button class="btn btn-primary">评论</button>
+        </div>
+    </form>
+    <ul class="answer-list" style="padding-left:0;">
+        {% for answer in question.answers %}
+            <li style="list-style:none;border-bottom:1px solid #eee;padding-top:10px;">
+                <div class="user-info" style="font-size:16px;color:#9b9b9b;line-height:40px;">
+                    <img src="{{ url_for('static',filename='images/img2.jpg') }}" alt="" class="avatar"
+                    style="width:40px;height:40px;border-radius:50%;">
+                    <span class="username" style="margin-left:10px;">{{ answer.author.username }}</span>
+                    <span class="create-time" style="float:right;">{{ answer.create_time }}</span>
+                </div>
+                <p class="answer-content" style="margin-left:50px;">{{ answer.content }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

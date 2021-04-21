@@ -1,0 +1,3 @@
+﻿  query.cpp
+d:\visualstudioworkspace\testmysql2\testmysql2\query.cpp(67): warning C4477: “sprintf_s”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 1 拥有了类型“CString”
+  testMySQL2.vcxproj -> D:\VisualStudioWorkSpace\testMySQL2\x64\Debug\testMySQL2.exe
